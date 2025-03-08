@@ -1,19 +1,35 @@
-function multiplyNumeric(obj) {
+// text box
+const txtBox = document.querySelector(".text-box");
 
-    for (let product in obj) {
-      if (typeof obj[product] === "number") {
-        obj[product] = obj[product] * 2;
-      };
-    };
+// equal button
+const equalBtn = document.querySelector(".equal-btn");
 
-};
+// operator buttons
+const addBtn = document.querySelector(".add-btn");
+const minusBtn = document.querySelector(".minus-btn");
+const timesBtn = document.querySelector(".times-btn");
+const divideBtn = document.querySelector(".divide-btn");
 
-let menu = {
-  width: 200,
-  height: 300,
-  title: "My menu"
-};
+// number buttons
+const zeroBtn = document.querySelector(".zero-btn");
+const oneBtn = document.querySelector(".one-btn");
+const twoBtn = document.querySelector(".two-btn");
+const threeBtn = document.querySelector(".three-btn");
+const fourBtn = document.querySelector(".four-btn");
+const fiveBtn = document.querySelector(".five-btn");
+const sixBtn = document.querySelector(".six-btn");
+const sevenBtn = document.querySelector(".seven-btn");
+const eightBtn = document.querySelector(".eight-btn");
+const nineBtn = document.querySelector(".nine-btn");
 
-multiplyNumeric(menu);
+// clear and decimal buttons
+const decimalBtn = document.querySelector(".decimal-btn");
+const clearBtn = document.querySelector(".clear-btn");
 
-console.log(menu);
+clearBtn.addEventListener("click", () => {
+  txtBox.innerHTML = "";
+});
+
+oneBtn.addEventListener("click", () => {
+  txtBox.textContent = 1;
+});
