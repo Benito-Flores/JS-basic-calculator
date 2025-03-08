@@ -26,10 +26,71 @@ const nineBtn = document.querySelector(".nine-btn");
 const decimalBtn = document.querySelector(".decimal-btn");
 const clearBtn = document.querySelector(".clear-btn");
 
+// global variables
+let total = 0;
+let boxContent = [];
+
+// clears text box, array, and sets global total to zero
 clearBtn.addEventListener("click", () => {
   txtBox.innerHTML = "";
+  boxContent = [];
+  total = 0;
+});
+
+// adds number to text box
+zeroBtn.addEventListener("click", () => {
+  if (boxContent.length > 0) {
+    boxContent.push(0); // stores new index to array
+    txtBox.textContent = boxContent.join("");
+  };
 });
 
 oneBtn.addEventListener("click", () => {
-  txtBox.textContent = 1;
+  boxContent.push(1); // stores new index to array
+  txtBox.textContent = boxContent.join("");
 });
+
+twoBtn.addEventListener("click", () => {
+  boxContent.push(2); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+threeBtn.addEventListener("click", () => {
+  boxContent.push(3); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+fourBtn.addEventListener("click", () => {
+  boxContent.push(4); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+fiveBtn.addEventListener("click", () => {
+  boxContent.push(5); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+sixBtn.addEventListener("click", () => {
+  boxContent.push(6); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+sevenBtn.addEventListener("click", () => {
+  boxContent.push(7); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+eightBtn.addEventListener("click", () => {
+  boxContent.push(8); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+nineBtn.addEventListener("click", () => {
+  boxContent.push(9); // stores new index to array
+  txtBox.textContent = boxContent.join("");
+});
+
+divideBtn.addEventListener("click", () => {
+  console.log(typeof boxContent[0]);
+});
+
