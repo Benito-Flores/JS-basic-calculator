@@ -41,7 +41,9 @@ clearBtn.addEventListener("click", () => {
 
 // operand buttons; adds number to text box
 zeroBtn.addEventListener("click", () => {
-  if (boxContent.length > 0) {
+  if (boxContent.at(0) == 0) {
+    // do nothing
+  } else {
     boxContent += 0;
     txtBox.textContent = boxContent;
   };
@@ -125,14 +127,9 @@ addBtn.addEventListener("click", () => {
 // minus operator event listener
 minusBtn.addEventListener("click", () => {
   operatorType = "minus";
-  if (total === 0) {
-    total = +boxContent;
-    boxContent = "";
-  } else {
-    total -= +boxContent;
-    boxContent = "";
-    txtBox.textContent = total;
-  };
+  total -= +boxContent;
+  txtBox.textContent = total;
+  boxContent = "";
 });
 
 // multiplication event listener
