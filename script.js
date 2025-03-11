@@ -30,6 +30,7 @@ const clearBtn = document.querySelector(".clear-btn");
 let total = 0;
 let boxContent = "";
 let operatorType = "";
+txtBox.textContent = 0;
 
 // clears text box, array, and sets global total to zero
 clearBtn.addEventListener("click", () => {
@@ -37,65 +38,116 @@ clearBtn.addEventListener("click", () => {
   boxContent = "";
   operatorType = "";
   total = 0;
+  txtBox.textContent = 0;
+});
+
+// adding decimal
+decimalBtn.addEventListener("click", () => {
+  if (!boxContent.includes(".")) { // Prevent multiple decimals
+    if (boxContent === "" || boxContent === "0") {
+      boxContent = "0."; // Start with "0." if first input
+    } else {
+      boxContent += "."; // Append decimal normally
+    }
+    txtBox.textContent = boxContent;
+  }
 });
 
 // operand buttons; adds number to text box
 zeroBtn.addEventListener("click", () => {
-  if (boxContent.at(0) == 0) {
-    // do nothing
-  } else {
-    boxContent += 0;
+  if (boxContent === "0") return; // Prevent multiple leading zeros like "00"
+  
+  // Allow multiple zeros after a decimal (e.g., "0.0001")
+  if (boxContent.includes(".") || boxContent !== "0") {
+    boxContent += "0";
     txtBox.textContent = boxContent;
-  };
+  }
 });
 
 oneBtn.addEventListener("click", () => {
-  boxContent += 1;
+  if (boxContent === "0") {
+    boxContent = "1";
+  } else {
+    boxContent += "1";
+  }
   txtBox.textContent = boxContent;
 });
 
 twoBtn.addEventListener("click", () => {
-  boxContent += 2;
+  if (boxContent === "0") {
+    boxContent = "2";
+  } else {
+    boxContent += "2";
+  }
   txtBox.textContent = boxContent;
 });
 
 threeBtn.addEventListener("click", () => {
-  boxContent += 3;
+  if (boxContent === "0") {
+    boxContent = "3";
+  } else {
+    boxContent += "3";
+  }
   txtBox.textContent = boxContent;
 });
 
 fourBtn.addEventListener("click", () => {
-  boxContent += 4;
+  if (boxContent === "0") {
+    boxContent = "4";
+  } else {
+    boxContent += "4";
+  }
   txtBox.textContent = boxContent;
 });
 
 fiveBtn.addEventListener("click", () => {
-  boxContent += 5;
+  if (boxContent === "0") {
+    boxContent = "5";
+  } else {
+    boxContent += "5";
+  }
   txtBox.textContent = boxContent;
 });
 
 sixBtn.addEventListener("click", () => {
-  boxContent += 6;
+  if (boxContent === "0") {
+    boxContent = "6";
+  } else {
+    boxContent += "6";
+  }
   txtBox.textContent = boxContent;
 });
 
 sevenBtn.addEventListener("click", () => {
-  boxContent += 7;
+  if (boxContent === "0") {
+    boxContent = "7";
+  } else {
+    boxContent += "7";
+  }
   txtBox.textContent = boxContent;
 });
 
 eightBtn.addEventListener("click", () => {
-  boxContent += 8;
+  if (boxContent === "0") {
+    boxContent = "8";
+  } else {
+    boxContent += "8";
+  }
   txtBox.textContent = boxContent;
 });
 
 nineBtn.addEventListener("click", () => {
-  boxContent += 9;
+  if (boxContent === "0") {
+    boxContent = "9";
+  } else {
+    boxContent += "9";
+  }
   txtBox.textContent = boxContent;
 });
 
 // operator buttons
 
+// equal button takes the operator type and performs that function
 equalBtn.addEventListener("click", () => {
   if (operatorType === "add") {
     total = total + +boxContent;
@@ -127,9 +179,15 @@ addBtn.addEventListener("click", () => {
 // minus operator event listener
 minusBtn.addEventListener("click", () => {
   operatorType = "minus";
-  total -= +boxContent;
-  txtBox.textContent = total;
-  boxContent = "";
+  if (boxContent !== 0 && total == 0) {
+    total = +boxContent;
+    boxContent = "";
+    txtBox.textContent = total;
+  } else {
+    total -= +boxContent;
+    boxContent = "";
+    txtBox.textContent = total;
+  }
 });
 
 // multiplication event listener
@@ -163,10 +221,10 @@ divideBtn.addEventListener("click", () => {
   };
 });
 
-decimalBtn.addEventListener("click", () => {
-  console.log(`total is ${total}`);
-  console.log(`total type is a ${typeof total}`);
-  console.log(`boxContent is ${boxContent}`);
-  console.log(`boxContent type is a ${typeof boxContent}`);
-  console.log(`operator is ${operatorType}`);
-});
+// decimalBtn.addEventListener("click", () => {
+//   console.log(`total is ${total}`);
+//   console.log(`total type is a ${typeof total}`);
+//   console.log(`boxContent is ${boxContent}`);
+//   console.log(`boxContent type is a ${typeof boxContent}`);
+//   console.log(`operator is ${operatorType}`);
+// });
