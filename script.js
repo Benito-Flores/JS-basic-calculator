@@ -35,6 +35,7 @@ let operatorType = "";
 clearBtn.addEventListener("click", () => {
   txtBox.innerHTML = "";
   boxContent = "";
+  operatorType = "";
   total = 0;
 });
 
@@ -99,11 +100,17 @@ equalBtn.addEventListener("click", () => {
     txtBox.textContent = total;
     boxContent = "";
   } else if (operatorType === "minus") {
-
+    total = total - +boxContent;
+    txtBox.textContent = total;
+    boxContent = "";
   } else if (operatorType === "multiply") {
-    
+    total = total * +boxContent;
+    txtBox.textContent = total;
+    boxContent = "";
   } else if (operatorType === "divide") {
-
+    total = total / +boxContent;
+    txtBox.textContent = total;
+    boxContent = "";
   };
 });
 
@@ -115,9 +122,54 @@ addBtn.addEventListener("click", () => {
   txtBox.textContent = total;
 });
 
+// minus operator event listener
+minusBtn.addEventListener("click", () => {
+  operatorType = "minus";
+  if (total === 0) {
+    total = +boxContent;
+    boxContent = "";
+  } else {
+    total -= +boxContent;
+    boxContent = "";
+    txtBox.textContent = total;
+  };
+});
+
+// multiplication event listener
+timesBtn.addEventListener("click", () => {
+  operatorType = "multiply";
+  if (total === 0) {
+    total = +boxContent;
+    boxContent = "";
+  } else if (boxContent == 0) {
+  // does nothing so the total doesn't set itself to zero
+  // and requires a number before multiplying
+  } else {
+    total *= +boxContent;
+    txtBox.textContent = total;
+    boxContent = "";
+  };
+});
+
 divideBtn.addEventListener("click", () => {
+  operatorType = "divide";
+  if (total === 0) {
+    total = +boxContent;
+    boxContent = "";
+  } else if (boxContent == 0) {
+  // does nothing so the total doesn't set itself to zero
+  // and requires a number before dividing
+  } else {
+    total /= +boxContent;
+    boxContent = "";
+    txtBox.textContent = total;
+  };
+});
+
+decimalBtn.addEventListener("click", () => {
   console.log(`total is ${total}`);
   console.log(`total type is a ${typeof total}`);
   console.log(`boxContent is ${boxContent}`);
   console.log(`boxContent type is a ${typeof boxContent}`);
+  console.log(`operator is ${operatorType}`);
 });
